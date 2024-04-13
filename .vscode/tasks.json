@@ -1,0 +1,66 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "dotnet",
+      "task": "build /Users/jack/development/games/stardew-chest-pooling/ChestPoolingV2/ChestPoolingV2.csproj",
+      "file": "/Users/jack/development/games/stardew-chest-pooling/ChestPoolingV2/ChestPoolingV2.csproj",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "dotnet: build /Users/jack/development/games/stardew-chest-pooling/ChestPoolingV2/ChestPoolingV2.csproj"
+    },
+
+    {
+      "label": "Echo 1",
+      "command": "echo",
+      "type": "shell",
+      "args": ["echo1"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["Echo 2"]
+    },
+    {
+      "label": "Echo 2",
+      "type": "shell",
+      "command": "echo",
+      "args": ["echo2"],
+      "group": "build"
+    },
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/ChestPoolingV2.sln",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/ChestPoolingV2.sln",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "watch",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["watch", "run", "--project", "${workspaceFolder}/ChestPoolingV2.sln"],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

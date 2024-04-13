@@ -1,0 +1,74 @@
+using System.Collections.Generic;
+using System.Linq;
+using StardewModdingAPI;
+using StardewValley;
+using StardewValley.Locations;
+using StardewValley.Objects;
+
+#nullable enable
+namespace ChestPoolingV2
+{
+    public class ChestPatches
+    {
+        public static IMonitor? StaticMonitor { get; private set; }
+        public static void Log(string s, LogLevel l = LogLevel.Trace) => StaticMonitor?.Log(s, l);
+
+        public static void Initialize(IMonitor monitor)
+        {
+
+            StaticMonitor = monitor;
+        }
+
+        public static List<Chest>? GetChests()
+        {
+            if (!Game1.hasLoadedGame || Game1.currentLocation == null)
+                return null;
+
+            Farm farm = Game1.getFarm();
+
+            List<Chest> chestList =
+            [
+                //get chests
+                .. Game1.locations
+                    .Where(location => location != null)
+                    .SelectMany(location => location.Objects.Values.OfType<Chest>()),
+                //get fridge
+                .. Game1.locations
+                    .OfType<FarmHouse>()
+                    .Select(house => house.fridge.Value)
+                    .Where(fridge => fridge != null),
+                //fridge
+                ..farm.buildings
+                    .Select(building => building.indoors.Value)
+                    .Where(indoors => indoors != null)
+                    .SelectMany(indoors => indoors.Objects.Values.OfType<Chest>()),
+
+            ];
+            return chestList;
+        }
+        public static bool Chest_grabItemFromInventory_Prefix(Chest __instance, Item item, Farmer who)
+        {
+
+            Chest chest = __instance;
+
+            List<Chest>? chestList = GetChests();
+            if (chestList == null)
+                return true;
+
+            Log("Item removed: " + item.Name);
+
+            if (chest.OpenChestAlreadyHadStackedItems(item))
+            {
+                Log("Already had more of this item");
+                return true;
+            }
+            if (!chestList.Any(c => c != chest && c.OpenChestAlreadyHadStackedItems(item)))
+            {
+                Log("No other chest had more of this item");
+                return true;
+            }
+
+            return ChestPoolingV2Mod.SearchForBestChest(chest, chestList, item, who);
+        }
+    }
+}

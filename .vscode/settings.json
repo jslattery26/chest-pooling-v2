@@ -1,0 +1,5 @@
+{
+  "dotnet.preferCSharpExtension": true,
+  "dotnet.defaultSolution": "ChestPoolingV2.sln",
+  "yaml.extension.recommendations": true
+}
