@@ -6,8 +6,11 @@
     <EnableHarmony>true</EnableHarmony>
     <!-- for github action, prob need env variable here -->
     <EnableModDeploy>false</EnableModDeploy>
+    <EnableGameDebugging>false</EnableGameDebugging>
+    <!-- -->
     <BuildWithMSBuildOnMono>true</BuildWithMSBuildOnMono>
     <Configurations>Release;Debug</Configurations>
+    <GamePath>"/Applications/Stardew Valley.app"</GamePath>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -18,9 +21,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
     <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.1.1"/>
   </ItemGroup>
-  <PropertyGroup>
-    <GamePath>"/Applications/Stardew Valley.app"</GamePath>
-  </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties/>
