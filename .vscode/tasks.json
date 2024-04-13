@@ -3,14 +3,14 @@
   "tasks": [
     {
       "type": "dotnet",
-      "task": "build /Users/jack/development/games/stardew-chest-pooling/ChestPoolingV2/ChestPoolingV2.csproj",
-      "file": "/Users/jack/development/games/stardew-chest-pooling/ChestPoolingV2/ChestPoolingV2.csproj",
+      "task": "build ${workspaceFolder}/ChestPoolingV2/ChestPoolingV2.csproj",
+      "file": "${workspaceFolder}/ChestPoolingV2/ChestPoolingV2.csproj",
       "group": {
         "kind": "build",
         "isDefault": true
       },
       "problemMatcher": [],
-      "label": "dotnet: build /Users/jack/development/games/stardew-chest-pooling/ChestPoolingV2/ChestPoolingV2.csproj"
+      "label": "dotnet: build ${workspaceFolder}/ChestPoolingV2/ChestPoolingV2.csproj"
     },
 
     {
