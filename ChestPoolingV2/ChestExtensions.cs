@@ -27,15 +27,14 @@ namespace ChestPoolingV2
             return chest.Items.Count < Chest.capacity || chest.Items.Any(i => i == null);
         }
 
-        public static bool OpenChestAlreadyHadStackedItems(this Chest chest, Item item)
+        public static bool ChestAlreadyHasItems(this Chest chest, Item item)
         {
             if (!chest.Items.HasAny())
             {
                 return false;
             }
-            int removedItems = item.Stack;
-            int totalItems = chest.Items.CountId(item.QualifiedItemId);
-            return removedItems < totalItems;
+
+            return chest.Items.ContainsId(item.QualifiedItemId);
         }
 
         public static int ChestScore(this Chest chest, Item item)

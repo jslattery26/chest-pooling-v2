@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Buildings;
 using StardewValley.Locations;
 using StardewValley.Objects;
 
@@ -44,6 +45,7 @@ namespace ChestPoolingV2
                     .SelectMany(indoors => indoors.Objects.Values.OfType<Chest>()),
 
             ];
+
             return chestList;
         }
         public static bool Chest_grabItemFromInventory_Prefix(Chest __instance, Item item, Farmer who)
@@ -55,16 +57,24 @@ namespace ChestPoolingV2
             if (chestList == null)
                 return true;
 
-            Log("Item removed: " + item.Name);
 
-            if (chest.OpenChestAlreadyHadStackedItems(item))
+
+            Log($"Item removed: {item.Name} - {item.Quality} - {item.QualifiedItemId} - {item.itemId}");
+
+            if (chest.specialChestType.Value == Chest.SpecialChestTypes.MiniShippingBin)
             {
-                Log("Already had more of this item");
+                Log("Mini shipping bin, skipping");
                 return true;
             }
-            if (!chestList.Any(c => c != chest && c.OpenChestAlreadyHadStackedItems(item)))
+
+            if (chest.ChestAlreadyHasItems(item))
             {
-                Log("No other chest had more of this item");
+                Log("Already has this item");
+                return true;
+            }
+            if (!chestList.Any(c => c != chest && c.ChestAlreadyHasItems(item)))
+            {
+                Log("No other chest has this item");
                 return true;
             }
 

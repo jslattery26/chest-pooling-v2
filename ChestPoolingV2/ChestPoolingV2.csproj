@@ -5,8 +5,8 @@
     <LangVersion>Latest</LangVersion>
     <EnableHarmony>true</EnableHarmony>
     <!-- for github action, prob need env variable here -->
-    <EnableModDeploy>false</EnableModDeploy>
-    <EnableGameDebugging>false</EnableGameDebugging>
+    <EnableModDeploy>true</EnableModDeploy>
+    <EnableGameDebugging>true</EnableGameDebugging>
     <!-- -->
     <BuildWithMSBuildOnMono>true</BuildWithMSBuildOnMono>
     <Configurations>Release;Debug</Configurations>
