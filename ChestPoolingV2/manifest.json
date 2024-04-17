@@ -5,5 +5,5 @@
   "Description": "Lets you deposit into all chests in one operation.",
   "UniqueID": "jslattery26.ChestPoolingV2",
   "EntryDll": "ChestPoolingV2.dll",
-  "UpdateKeys": ["GitHub:jslattery26/stardew-chest-pooling-v2"]
+  "UpdateKeys": ["GitHub:jslattery26/stardew_mods"]
 }
