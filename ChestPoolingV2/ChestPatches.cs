@@ -61,6 +61,11 @@ namespace ChestPoolingV2
 
             Log($"Item removed: {item.Name} - {item.Quality} - {item.QualifiedItemId} - {item.itemId}");
 
+            if (ChestPoolingV2Mod.ModInstance?.Disabled == true)
+            {
+                Log("Chest Pooling is disabled");
+                return true;
+            }
             if (chest.specialChestType.Value == Chest.SpecialChestTypes.MiniShippingBin)
             {
                 Log("Mini shipping bin, skipping");

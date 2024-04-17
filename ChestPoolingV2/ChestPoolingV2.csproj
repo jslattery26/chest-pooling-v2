@@ -17,6 +17,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
+  <Import Project="..\Common\Common.projitems" Label="Shared"/>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
     <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.1.1"/>
