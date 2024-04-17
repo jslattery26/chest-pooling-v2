@@ -1,5 +1,5 @@
 {
-  "version": "2.0.1",
+  "version": "2.0.0",
   "tasks": [
     {
       "type": "dotnet",
@@ -37,7 +37,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/ChestPoolingV2.sln",
+        "${workspaceFolder}/JSlattery26.StardewMods.sln",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary;ForceNoAlign"
       ],
@@ -49,7 +49,7 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/ChestPoolingV2.sln",
+        "${workspaceFolder}/JSlattery26.StardewMods.sln",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary;ForceNoAlign"
       ],
@@ -59,7 +59,7 @@
       "label": "watch",
       "command": "dotnet",
       "type": "process",
-      "args": ["watch", "run", "--project", "${workspaceFolder}/ChestPoolingV2.sln"],
+      "args": ["watch", "run", "--project", "${workspaceFolder}/JSlattery26.StardewMods.sln"],
       "problemMatcher": "$msCompile"
     }
   ]
